@@ -4,6 +4,12 @@
 
     <Editor type="link"></Editor>
 
+    <Editor type="song"></Editor>
+
+    <Editor type="video"></Editor>
+
+    <Editor type="note"></Editor>
+
     <br />
   </section>
 </template>

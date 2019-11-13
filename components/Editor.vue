@@ -1,43 +1,66 @@
 <template>
   <section>
-    <section v-if="type === 'link'">
-      <b-field label="Link">
-        <b-input v-model="linkText" type="url"></b-input>
-      </b-field>
-    </section>
-    <section v-if="type === 'song'">
-      <b-field label="Song">
-        <b-input v-model="linkText" type="url"></b-input>
-      </b-field>
-    </section>
-    <section v-if="type === 'video'">
-      <b-field label="Video">
-        <b-input v-model="linkText" type="url"></b-input>
-      </b-field>
-    </section>
-    <b-field label="Title">
-      <b-input v-model="title"></b-input>
+    <b-field v-if="type === 'link'">
+      <b-input
+        v-model="linkText"
+        type="url"
+        icon="link-variant"
+        placeholder="Link"
+      ></b-input>
     </b-field>
-    <b-field label="Note">
-      <b-input v-model="note" type="textarea"></b-input>
+
+    <b-field v-if="type === 'song'">
+      <b-input
+        v-model="linkText"
+        type="url"
+        icon="music-note"
+        placeholder="Link to song"
+      ></b-input>
     </b-field>
+
+    <b-field v-if="type === 'video'">
+      <b-input
+        v-model="linkText"
+        type="url"
+        icon="movie"
+        placeholder="Link to video"
+      ></b-input>
+    </b-field>
+
+    <b-field>
+      <b-input
+        v-model="title"
+        icon="format-title"
+        placeholder="Title"
+      ></b-input>
+    </b-field>
+
+    <b-field>
+      <b-input v-model="note" type="textarea" placeholder="Note"></b-input>
+    </b-field>
+
     <b-collapse :open="false">
       <div slot="trigger" slot-scope="props" role="button">
-        <b-icon :icon="props.open ? 'menu-up' : 'menu-down'"></b-icon>
+        <b-icon :icon="props.open ? 'chevron-down' : 'chevron-up'"></b-icon>
       </div>
-      <b-field label="Add some tags">
+      <b-field>
         <b-taginput
           v-model="tags"
           ellipsis
-          icon="label"
-          placeholder="Add a tag"
+          icon="tag-multiple"
+          placeholder="#tags"
           autocomplete
           allow-new
         >
         </b-taginput>
       </b-field>
-      <b-field label="Source">
-        <b-input v-model="source" type="url"></b-input>
+      <b-field>
+        <b-input
+          v-model="source"
+          type="url"
+          icon="link-variant"
+          placeholder="Source"
+        ></b-input>
       </b-field>
     </b-collapse>
   </section>
