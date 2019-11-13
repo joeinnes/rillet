@@ -27,6 +27,36 @@
       ></b-input>
     </b-field>
 
+    <section v-if="type === 'image'">
+      <b-field>
+        <b-upload v-model="dropFiles" multiple drag-drop>
+          <section class="section">
+            <div class="content has-text-centered">
+              <p>
+                <b-icon icon="upload" size="is-large"></b-icon>
+              </p>
+              <p>Upload one or more photos</p>
+            </div>
+          </section>
+        </b-upload>
+      </b-field>
+
+      <div class="tags">
+        <span
+          v-for="(file, index) in dropFiles"
+          :key="index"
+          class="tag is-primary"
+        >
+          {{ file.name }}
+          <button
+            @click="deleteDropFile(index)"
+            class="delete is-small"
+            type="button"
+          ></button>
+        </span>
+      </div>
+    </section>
+
     <b-field>
       <b-input
         v-model="title"
@@ -80,7 +110,9 @@ export default {
       note: '',
       title: '',
       tags: [],
-      source: ''
+      source: '',
+      dropFiles: [],
+      isComponentModalActive: true
     }
   }
 }
